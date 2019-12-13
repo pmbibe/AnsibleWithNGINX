@@ -1,0 +1,41 @@
+---
+- name: Install Couchbase
+  hosts: all
+
+  tasks:
+  - name: "Install PCRE Dependency"
+    shell: "wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/{{ PCRE_version }}.tar.gz && \
+            tar -zxf {{ PCRE_version}}.tar.gz && \
+            cd {{ PCRE_version }} && \
+            ./configure && \
+            make && \
+            make install"
+  - name: "Install zlib"
+    shell: " wget http://zlib.net/{{ ZLIB_version }}.tar.gz && \
+             tar -zxf {{ ZLIB_version }}.tar.gz && \
+             cd {{ ZLIB_version }} && \
+             ./configure && \
+             make && \
+             make install "
+  - name: "Install OpenSSL"
+    shell: " wget http://www.openssl.org/source/{{ OPENSSL_version }}.tar.gz && \
+             tar -zxf {{ OPENSSL_version }}.tar.gz && \
+             cd {{ OPENSSL_version }} && \
+             ./Configure linux-x86_64 --prefix=/usr && \
+             make && \
+             make install "
+  - name: "Install Nginx"
+    shell: " wget https://nginx.org/download/{{ NGINX_version }}.tar.gz && \
+             tar zxf {{ NGINX_version }}.tar.gz && \
+             cd {{ NGINX_version }} && \
+             ./configure \
+             --sbin-path=/usr/local/nginx/nginx \
+             --conf-path=/usr/local/nginx/nginx.conf \
+             --pid-path=/usr/local/nginx/nginx.pid \
+             --with-pcre=../{{ PCRE_version }} \
+             --with-zlib=../{{ PCRE_version }} \
+             --with-http_ssl_module \
+             --with-stream \
+             --with-mail && \
+             make  && \
+             make install "
