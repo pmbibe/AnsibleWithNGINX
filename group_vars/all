@@ -1,4 +1,4 @@
-PCRE_version: pcre-8.43
-ZLIB_version: zlib-1.2.11
-OPENSSL_version: openssl-1.1.1c
-NGINX_version: nginx-1.16.1
+PCRE_version: 8.43
+ZLIB_version: 1.2.11
+OPENSSL_version: 1.1.1c
+NGINX_version: 1.16.1
