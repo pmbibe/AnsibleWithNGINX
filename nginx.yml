@@ -4,7 +4,7 @@
 
   tasks:
   - name: "Install PCRE Dependency"
-    shell: "wget https://ftp.pcre.org/pub/pcre/pcre-{{ PCRE_version }}.tar.gz && \
+    shell: "wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-{{ PCRE_version }}.tar.gz && \
             tar -zxf pcre-{{ PCRE_version }}.tar.gz && \
             cd pcre-{{ PCRE_version }} && \
             ./configure && \
